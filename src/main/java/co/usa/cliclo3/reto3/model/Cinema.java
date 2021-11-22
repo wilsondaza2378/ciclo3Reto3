@@ -8,6 +8,7 @@ package co.usa.cliclo3.reto3.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 /**
  *
  * @author asus
@@ -23,11 +24,19 @@ public class Cinema implements Serializable {
     private Integer capacity;
     private String name;
     private String description;
-    
+
     @ManyToOne
     @JoinColumn(name="idCategory")
     @JsonIgnoreProperties({"cinema"})
     private Category category;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
+    @JsonIgnoreProperties({"cinema","client"})
+    private List<Message> messages;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
+    @JsonIgnoreProperties("cinemas")
+    private List<Reservation> reservations;
 
     public Integer getId() {
         return id;
@@ -75,5 +84,22 @@ public class Cinema implements Serializable {
 
     public void setCategory(Category category) {
         this.category = category;
-    }    
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
 }

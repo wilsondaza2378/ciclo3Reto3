@@ -29,7 +29,7 @@ public class Reservation implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="client")
-    @JsonIgnoreProperties({"messages","reservas"})
+    @JsonIgnoreProperties({"messages","reservas","cinema"})
     private Client client;
 
     public Integer getIdReservation() {
