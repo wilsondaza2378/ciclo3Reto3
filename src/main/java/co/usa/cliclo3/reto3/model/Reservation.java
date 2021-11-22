@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.usa.cliclo3.reto3.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.aspectj.bridge.Message;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -23,13 +20,13 @@ public class Reservation implements Serializable {
     private String status="created";
     
     @ManyToOne
-    @JoinColumn(name="cinema")
-    @JsonIgnoreProperties({"cinema","message","reservations"})
+    @JoinColumn(name="idCinema")
+    @JsonIgnoreProperties({"reservations", "messages,cinema"})
     private Cinema cinema;
 
     @ManyToOne
     @JoinColumn(name="client")
-    @JsonIgnoreProperties({"message","reservation"})
+    @JsonIgnoreProperties({"messages","reservations"})
     private Client client;
 
     @OneToOne(cascade = {CascadeType.PERSIST},mappedBy="reservation")
