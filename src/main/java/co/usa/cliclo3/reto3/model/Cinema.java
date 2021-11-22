@@ -32,11 +32,11 @@ public class Cinema implements Serializable {
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
     @JsonIgnoreProperties({"cinema","client"})
-    private List<Message> messages;
+    private List<Message> message;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
-    @JsonIgnoreProperties("cinema")
-    private List<Reservation> reservations;
+    @JsonIgnoreProperties({"cinema","client"})
+    private List<Reservation> reservation;
 
     public Integer getId() {
         return id;
@@ -86,21 +86,20 @@ public class Cinema implements Serializable {
         this.category = category;
     }
 
-    public List<Message> getMessages() {
-        return messages;
+    public List<Message> getMessage() {
+        return message;
     }
 
-    public void setMessages(List<Message> messages) {
-        this.messages = messages;
+    public void setMessage(List<Message> message) {
+        this.message = message;
     }
 
-    public List<Reservation> getReservations() {
-        return reservations;
+    public List<Reservation> getReservation() {
+        return reservation;
     }
 
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
+    public void setReservation(List<Reservation> reservation) {
+        this.reservation = reservation;
     }
-
 
 }
