@@ -28,7 +28,7 @@ public class Reservation implements Serializable {
     
     @ManyToOne
     @JoinColumn(name="idCinema")
-    @JsonIgnoreProperties({"reservations", "messages,cinema"})
+    @JsonIgnoreProperties({"reservations", "messages", "cinema"})
     private Cinema cinema;
 
     @ManyToOne
@@ -97,5 +97,5 @@ public class Reservation implements Serializable {
         this.score = score;
     }
 
-   
+  
 }
