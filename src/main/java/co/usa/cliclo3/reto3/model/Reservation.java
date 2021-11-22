@@ -1,6 +1,7 @@
 package co.usa.cliclo3.reto3.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;
@@ -38,7 +39,7 @@ public class Reservation implements Serializable {
 
     @OneToOne(cascade = {CascadeType.PERSIST},mappedBy="reservation")
     @JoinColumn(name="idScore")
-    @JsonIgnoreProperties("reservation")
+    @JsonIgnoreProperties("reservations")
     public Score score;
 
     public Integer getIdReservation() {
