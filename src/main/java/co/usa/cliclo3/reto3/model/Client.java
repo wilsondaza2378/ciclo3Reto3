@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name="client")
+@Table(name="cliente")
 public class Client implements Serializable {
     
     @Id
@@ -23,7 +23,7 @@ public class Client implements Serializable {
     private List<Message> messages;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
-    @JsonIgnoreProperties("client")
+    @JsonIgnoreProperties("cliente")
     private List<Reservation> reservations;
 
     public Integer getIdClient() {
@@ -81,5 +81,5 @@ public class Client implements Serializable {
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }
-    
-}
+
+  }
