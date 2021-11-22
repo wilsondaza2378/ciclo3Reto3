@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name="reservas")
+@Table(name="reserva")
 
 public class Reservation implements Serializable {
     
@@ -24,12 +24,12 @@ public class Reservation implements Serializable {
     
     @ManyToOne
     @JoinColumn(name="cinema")
-    @JsonIgnoreProperties({"message","reservas"})
+    @JsonIgnoreProperties({"message","reservation"})
     private Cinema cinema;
 
     @ManyToOne
     @JoinColumn(name="client")
-    @JsonIgnoreProperties({"messages","reservas","cinema"})
+    @JsonIgnoreProperties({"message","reservation","cinema"})
     private Client client;
 
     public Integer getIdReservation() {
@@ -80,6 +80,5 @@ public class Reservation implements Serializable {
         this.client = client;
     }
 
-    
 
 }

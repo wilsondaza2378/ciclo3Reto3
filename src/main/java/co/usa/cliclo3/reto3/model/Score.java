@@ -22,7 +22,11 @@ import javax.persistence.Table;
 @Entity
 @Table (name="score")
 public class Score implements Serializable{
-   
+
+    public static int getId() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idScore;
@@ -65,5 +69,6 @@ public class Score implements Serializable{
     public void setReservation(Reservation reservation) {
         this.reservation = reservation;
     }
-    
+
+   
 }
