@@ -11,26 +11,29 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name="reserva")
-
+@Table(name="reservations")
 public class Reservation implements Serializable {
     
+    @OneToOne(cascade = {CascadeType.PERSIST},mappedBy="reservation")
+    @JoinColumn(name="idScore")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
     private Date startDate;
     private Date devolutionDate;
-    private String status;
+    private String status="created";
     
     @ManyToOne
     @JoinColumn(name="cinema")
-    @JsonIgnoreProperties({"message","reservation"})
+    @JsonIgnoreProperties({"reservations", "messages,cinema"})
     private Cinema cinema;
 
     @ManyToOne
     @JoinColumn(name="client")
-    @JsonIgnoreProperties({"message","reservation","cinema"})
+    @JsonIgnoreProperties({"messages","reservations"})
     private Client client;
+
+    @JsonIgnoreProperties("reservation")
 
     public Integer getIdReservation() {
         return idReservation;
@@ -79,6 +82,5 @@ public class Reservation implements Serializable {
     public void setClient(Client client) {
         this.client = client;
     }
-
 
 }

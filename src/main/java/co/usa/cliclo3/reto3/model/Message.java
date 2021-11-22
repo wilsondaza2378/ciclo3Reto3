@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="message")
+@Table(name="messages")
 
 public class Message implements Serializable {
     
@@ -21,12 +21,12 @@ public class Message implements Serializable {
     
     @ManyToOne
     @JoinColumn(name="cinema")
-    @JsonIgnoreProperties({"message","reservation"})
+    @JsonIgnoreProperties({"messages","reservations"})
     private Cinema cinema;
 
     @ManyToOne
     @JoinColumn(name="idClient")
-    @JsonIgnoreProperties({"message","reservation"})
+    @JsonIgnoreProperties({"messages","reservations"})
     private Client client;
 
     public Integer getIdMessage() {
@@ -61,5 +61,5 @@ public class Message implements Serializable {
         this.client = client;
     }
 
-    
+
 }
