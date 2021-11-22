@@ -38,4 +38,8 @@ public class ReservationService {
             return reservationRepository.save(reserva);
         }
     }
+
+    public Optional<Reservation> getReservation(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

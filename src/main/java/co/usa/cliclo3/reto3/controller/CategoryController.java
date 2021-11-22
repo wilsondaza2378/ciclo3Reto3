@@ -33,7 +33,7 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping("/all")
-    public List<Category> getCategorys(){
+    public List<Category> getCategory(){
         return categoryService.getAll();
     }
 
