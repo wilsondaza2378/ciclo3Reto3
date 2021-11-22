@@ -14,7 +14,7 @@ import java.util.List;
  * @author asus
  */
 @Entity
-@Table(name="cinema")
+@Table(name="cinemas")
 public class Cinema implements Serializable {
     
     @Id
@@ -25,17 +25,12 @@ public class Cinema implements Serializable {
     private String name;
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name="idCategory")
-    @JsonIgnoreProperties({"cinema"})
-    private Category category;
-
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
     @JsonIgnoreProperties({"cinema","client"})
     private List<Message> message;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
-    @JsonIgnoreProperties({"cinema","client"})
+    @JsonIgnoreProperties({"cinemas"})
     private List<Reservation> reservation;
 
     public Integer getId() {
@@ -78,14 +73,6 @@ public class Cinema implements Serializable {
         this.description = description;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public List<Message> getMessage() {
         return message;
     }
@@ -101,5 +88,6 @@ public class Cinema implements Serializable {
     public void setReservation(List<Reservation> reservation) {
         this.reservation = reservation;
     }
+
 
 }
