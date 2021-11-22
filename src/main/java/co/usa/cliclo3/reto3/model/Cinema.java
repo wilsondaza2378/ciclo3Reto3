@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.usa.cliclo3.reto3.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -31,7 +27,7 @@ public class Cinema implements Serializable {
     private Category category;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
-    @JsonIgnoreProperties({"cinema","client"})
+    @JsonIgnoreProperties({"cinemas","client"})
     private List<Message> message;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
@@ -44,6 +40,14 @@ public class Cinema implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getOwner() {
@@ -60,14 +64,6 @@ public class Cinema implements Serializable {
 
     public void setCapacity(Integer capacity) {
         this.capacity = capacity;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDescription() {
