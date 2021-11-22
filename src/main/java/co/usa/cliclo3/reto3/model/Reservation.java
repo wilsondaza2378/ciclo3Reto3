@@ -9,13 +9,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="reservations")
 public class Reservation implements Serializable {
     
-    @OneToOne(cascade = {CascadeType.PERSIST},mappedBy="reservation")
-    @JoinColumn(name="idScore")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
@@ -33,7 +32,10 @@ public class Reservation implements Serializable {
     @JsonIgnoreProperties({"messages","reservations"})
     private Client client;
 
+    @OneToOne(cascade = {CascadeType.PERSIST},mappedBy="reservation")
+    @JoinColumn(name="idScore")
     @JsonIgnoreProperties("reservation")
+    public Score score;
 
     public Integer getIdReservation() {
         return idReservation;
@@ -83,4 +85,14 @@ public class Reservation implements Serializable {
         this.client = client;
     }
 
+    public Score getScore() {
+        return score;
+    }
+
+    public void setScore(Score score) {
+        this.score = score;
+    }
+
+
 }
+
