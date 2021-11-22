@@ -24,12 +24,12 @@ public class Reservation implements Serializable {
     
     @ManyToOne
     @JoinColumn(name="cinema")
-    @JsonIgnoreProperties({"reservations", "messages,cinema"})
+    @JsonIgnoreProperties({"cinema","message","reservations"})
     private Cinema cinema;
 
     @ManyToOne
     @JoinColumn(name="client")
-    @JsonIgnoreProperties({"messages","reservations"})
+    @JsonIgnoreProperties({"message","reservation"})
     private Client client;
 
     @OneToOne(cascade = {CascadeType.PERSIST},mappedBy="reservation")
@@ -93,6 +93,5 @@ public class Reservation implements Serializable {
         this.score = score;
     }
 
-
+    
 }
-
