@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="mensajes")
+@Table(name="message")
 
 public class Message implements Serializable {
     
@@ -28,7 +28,6 @@ public class Message implements Serializable {
     @JoinColumn(name="idClient")
     @JsonIgnoreProperties({"message","reservation"})
     private Client client;
-    
 
     public Integer getIdMessage() {
         return idMessage;
@@ -61,7 +60,6 @@ public class Message implements Serializable {
     public void setClient(Client client) {
         this.client = client;
     }
-
 
     
 }

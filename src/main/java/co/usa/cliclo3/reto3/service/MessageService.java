@@ -33,7 +33,7 @@ public class MessageService {
         if(msj.getIdMessage()==null){
             return messageRepository.save(msj);
         }else {
-            Optional<Message> msjAux=messageRepository.getMessage(msj.getIdMessage());
+            Optional<Message> msjAux=messageRepository.getMessage((int) msj.getIdMessage());
             if(msjAux.isEmpty()){
                 return messageRepository.save(msj);
             }else{
